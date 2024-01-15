@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format-sql: true
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
