@@ -43,8 +43,8 @@ jobs:
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }} # id와 패스워드를 이용한 로그인
-          docker build -t roovies/matchimban:${GITHUB_SHA::7} . 
-          docker push roovies/matchimban:${GITHUB_SHA::7}
+          docker build -t chdms/mini-project:${GITHUB_SHA::7} . 
+          docker push chdms/mini-project:${GITHUB_SHA::7}
 
       - name: Get Github Actions IP
         id: ip
@@ -70,8 +70,8 @@ jobs:
           envs: GITHUB_SHA
           script: |
             sudo docker rm -f server
-            sudo docker pull roovies/matchimban:${GITHUB_SHA::7}
-            sudo docker tag roovies/matchimban:${GITHUB_SHA::7} matchimban
+            sudo docker pull chdms/mini-project:${GITHUB_SHA::7}
+            sudo docker tag chdms/mini-project:${GITHUB_SHA::7} mini-project
             sudo docker run -d --name server \
               -e TZ=Asia/Seoul \
               -e MYSQL_ID=${{ secrets.MYSQL_ID }} \
