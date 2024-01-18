@@ -77,7 +77,7 @@ jobs:
               -e MYSQL_ID=${{ secrets.MYSQL_ID }} \
               -e MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
               -e RDS_URL=${{ secrets.RDS_URL }} \
-              -p 8080:8080 matchimban
+              -p 8080:8080 mini-project
 
       - name: Remove Github Actions IP From Security Group
         run: |
