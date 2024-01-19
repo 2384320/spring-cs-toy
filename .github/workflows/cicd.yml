@@ -1,4 +1,4 @@
-name: matchimban CI/CD with Gradle
+name: mini-project CI/CD with Gradle
 
 on:
   push:
