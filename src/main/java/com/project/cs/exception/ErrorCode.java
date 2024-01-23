@@ -21,7 +21,11 @@ public enum ErrorCode {
 
     //5xxx : 도메인 관련 응답
     //50xx : Member
-    MEMBER_ERROR_NOT_FOUND(5000, "회원을 찾지 못했습니다.");
+    MEMBER_NOT_FOUND(5000, "회원을 찾지 못했습니다."),
+    MEMBER_ACCESS_DENY(5001, "접근이 거부되었습니다."),
+    MEMBER_INVALID_TOKEN(5002, "토큰이 올바르지 않습니다."),
+    MEMBER_PASSWORD_MISMATCH(5003, "비밀번호가 올바르지 않습니다."),
+    MEMBER_DUPLICATED_EMAIL(5004, "중복된 이메일입니다.");
 
     private final int code;
     private final String msg;
