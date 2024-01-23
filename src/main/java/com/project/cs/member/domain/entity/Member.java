@@ -1,5 +1,6 @@
 package com.project.cs.member.domain.entity;
 
+import com.project.cs.member.domain.dto.SignRequest;
 import com.project.cs.member.domain.enums.MemberRole;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -40,12 +41,12 @@ public class Member {
     @ColumnDefault("'MEMBER'")
     private MemberRole role;
 
-    public static Member createMember(String nickname, String email, String password) {
+    public static Member createMember(SignRequest request, String password) {
         return Member.builder()
-                .nickname(nickname)
-                .email(email)
+                .nickname(request.getNickname())
+                .email(request.getEmail())
                 .password(password)
-                .role(MemberRole.MEMBER)
+                .role(MemberRole.ROLE_MEMBER)
                 .build();
     }
 }
