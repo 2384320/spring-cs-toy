@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
     private final MemberService memberService;
 
-    @PostMapping("/api/member/signup")
+    @PostMapping("/signup")
     public ResponseEntity<Object> signup(@RequestBody SignRequest request) {
         return memberService.signup(request);
     }
 
-    @PostMapping("/api/member/login")
+    @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody SignRequest request) {
         return memberService.login(request);
     }
 
-    @GetMapping("/member/get")
+    @GetMapping("/member")
     public ResponseEntity<Object> getMember(@RequestParam String email) {
         return memberService.getMember(email);
     }
 
-    @GetMapping("/admin/get")
+    @GetMapping("/admin")
     public ResponseEntity<Object> getAdmin(@RequestParam String email) {
         return memberService.getMember(email);
     }
