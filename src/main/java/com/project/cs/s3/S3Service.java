@@ -30,44 +30,44 @@ public class S3Service {
     public String saveFile(MultipartFile multipartFile) throws IOException {
         String originalFileName = multipartFile.getOriginalFilename();
         String savedFileName = getSavedFilename(originalFileName);
-        String savedFileUrl = getSavedFileUrl(savedFileName);
+        //String savedFileUrl = getSavedFileUrl(savedFileName);
 
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(multipartFile.getSize());
         metadata.setContentType(multipartFile.getContentType());
 
-        amazonS3.putObject(bucket, originalFileName, multipartFile.getInputStream(), metadata);
-        return amazonS3.getUrl(bucket, originalFileName).toString();
+        amazonS3.putObject(bucket, savedFileName, multipartFile.getInputStream(), metadata);
+        return amazonS3.getUrl(bucket, savedFileName).toString();
     }
 
     public String getSavedFilename(String originalFileName) {
         return UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf('.')); // .jpg
     }
 
-    public String getSavedFileUrl(String savedFileName) {
-        return new StringBuilder()
-                .append("https://")
-                .append(bucket)
-                .append(".s3.")
-                .append(region)
-                .append(".amazonaws.com/")
-                .append(new SimpleDateFormat("yyMMdd").format(new Date()))
-                .append("/")
-                .append(savedFileName)
-                .toString();
-    }
+//    public String getSavedFileUrl(String savedFileName) {
+//        return new StringBuilder()
+//                .append("https://")
+//                .append(bucket)
+//                .append(".s3.")
+//                .append(region)
+//                .append(".amazonaws.com/")
+//                .append(new SimpleDateFormat("yyMMdd").format(new Date()))
+//                .append("/")
+//                .append(savedFileName)
+//                .toString();
+//    }
 
-    public ResponseEntity<UrlResource> downloadImage(String originalFilename) {
-        UrlResource urlResource = new UrlResource(amazonS3.getUrl(bucket, originalFilename));
+    public ResponseEntity<UrlResource> downloadImage(String savedFileName) {
+        UrlResource urlResource = new UrlResource(amazonS3.getUrl(bucket, savedFileName));
 
-        String contentDisposition = "attachment; filename=\"" + originalFilename + "\"";
+        String contentDisposition = "attachment; filename=\"" + savedFileName + "\"";
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
                 .body(urlResource);
     }
 
-    public void deleteImage(String originalFilename) {
-        amazonS3.deleteObject(bucket, originalFilename);
+    public void deleteImage(String savedFileName) {
+        amazonS3.deleteObject(bucket, savedFileName);
     }
 }
