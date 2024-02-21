@@ -28,13 +28,13 @@ public class ImageController {
     }
 
     @GetMapping()
-    public ResponseEntity<Object> downloadImage(String savedFileName) throws IOException {
+    public ResponseEntity<Object> downloadImage(String savedFileName) {
         s3Service.downloadImage(savedFileName);
         return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
     }
 
     @DeleteMapping()
-    public ResponseEntity<Object> deleteImage(String savedFileName) throws IOException {
+    public ResponseEntity<Object> deleteImage(String savedFileName) {
         s3Service.deleteImage(savedFileName);
         return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
     }
