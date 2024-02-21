@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,13 +29,14 @@ public class ImageController {
     }
 
     @GetMapping()
-    public ResponseEntity<Object> downloadImage(String savedFileName) {
-        s3Service.downloadImage(savedFileName);
+    public ResponseEntity<Object> downloadImage(@RequestHeader String savedFileName) {
+        ResultData result = new ResultData();
+        result.setResult(s3Service.downloadImage(savedFileName));
         return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
     }
 
     @DeleteMapping()
-    public ResponseEntity<Object> deleteImage(String savedFileName) {
+    public ResponseEntity<Object> deleteImage(@RequestHeader String savedFileName) {
         s3Service.deleteImage(savedFileName);
         return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
     }
