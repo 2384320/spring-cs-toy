@@ -1,6 +1,7 @@
 package com.project.cs;
 
-import com.project.cs.common.exception.ResultData;
+import com.project.cs.common.response.CommonResponse;
+import com.project.cs.common.response.code.SuccessCode;
 import com.project.cs.common.s3.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,20 +26,34 @@ public class ImageController {
     @PostMapping()
     public ResponseEntity<Object> saveImage(@RequestParam(value = "file") MultipartFile file) throws IOException {
         s3Service.saveFile(file);
-        return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
+        return new ResponseEntity<>(
+                CommonResponse.success(
+                        SuccessCode.IMAGE_SUCCESS_SAVE
+                ),
+                HttpStatus.OK
+        );
     }
 
     @GetMapping()
     public ResponseEntity<Object> downloadImage(@RequestHeader String savedFileName) {
-        ResultData result = new ResultData();
-        result.setResult(s3Service.downloadImage(savedFileName));
-        return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
+        return new ResponseEntity<>(
+                CommonResponse.success(
+                        SuccessCode.IMAGE_SUCCESS_DOWNLOAD,
+                        s3Service.downloadImage(savedFileName)
+                ),
+                HttpStatus.OK
+        );
     }
 
     @DeleteMapping()
     public ResponseEntity<Object> deleteImage(@RequestHeader String savedFileName) {
         s3Service.deleteImage(savedFileName);
-        return new ResponseEntity<>(new ResultData(), HttpStatus.OK);
+        return new ResponseEntity<>(
+                CommonResponse.success(
+                        SuccessCode.IMAGE_SUCCESS_DELETE
+                ),
+                HttpStatus.OK
+        );
     }
 
 }
