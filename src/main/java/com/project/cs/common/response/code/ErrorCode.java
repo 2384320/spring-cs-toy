@@ -1,4 +1,4 @@
-package com.project.cs.exception;
+package com.project.cs.common.response.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +25,12 @@ public enum ErrorCode {
     MEMBER_ACCESS_DENY(5001, "접근이 거부되었습니다."),
     MEMBER_INVALID_TOKEN(5002, "토큰이 올바르지 않습니다."),
     MEMBER_PASSWORD_MISMATCH(5003, "비밀번호가 올바르지 않습니다."),
-    MEMBER_DUPLICATED_EMAIL(5004, "중복된 이메일입니다.");
+    MEMBER_DUPLICATED_EMAIL(5004, "중복된 이메일입니다."),
+    MEMBER_EXPIRED_TOKEN(5005, "토큰이 만료되었습니다."),
+
+    //51xx : Image
+    IMAGE_NOT_FOUND(5100, "이미지가 존재하지 않습니다.");
 
     private final int code;
-    private final String msg;
+    private final String message;
 }
