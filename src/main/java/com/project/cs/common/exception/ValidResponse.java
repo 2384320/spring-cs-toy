@@ -1,23 +1,20 @@
-package com.project.cs.exception;
+package com.project.cs.common.exception;
 
 import lombok.Data;
 import org.springframework.validation.FieldError;
 
-
 @Data
-public class ValidResult {
+public class ValidResponse {
 
     private String field;
-    private String msg;
+    private String message;
     private Object invalidValue;
     private String kind;
 
-    public ValidResult(FieldError fieldError) {
+    public ValidResponse(FieldError fieldError) {
         this.field = fieldError.getField();
-        this.msg = fieldError.getDefaultMessage();
-//        this.invalidValue = (fieldError.getRejectedValue() != null) ? fieldError.getRejectedValue() : "";
+        this.message = fieldError.getDefaultMessage();
         this.invalidValue = fieldError.getRejectedValue();
         this.kind = fieldError.getCode();
     }
-
 }

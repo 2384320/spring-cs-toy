@@ -1,5 +1,6 @@
-package com.project.cs.exception;
+package com.project.cs.common.exception;
 
+import com.project.cs.common.response.code.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

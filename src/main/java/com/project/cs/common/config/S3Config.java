@@ -1,4 +1,4 @@
-package com.project.cs.config;
+package com.project.cs.common.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
