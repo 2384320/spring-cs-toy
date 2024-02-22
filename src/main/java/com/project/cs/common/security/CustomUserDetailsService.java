@@ -1,7 +1,7 @@
 package com.project.cs.common.security;
 
-import com.project.cs.exception.ErrorCode;
 import com.project.cs.common.exception.SVCException;
+import com.project.cs.common.response.code.ErrorCode;
 import com.project.cs.member.domain.entity.Member;
 import com.project.cs.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
