@@ -1,4 +1,4 @@
-package com.project.cs.exception;
+package com.project.cs.common.exception;
 
 import lombok.Data;
 import org.springframework.validation.FieldError;

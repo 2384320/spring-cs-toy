@@ -1,4 +1,4 @@
-package com.project.cs.exception;
+package com.project.cs.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

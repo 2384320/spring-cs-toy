@@ -1,13 +1,13 @@
 package com.project.cs.member.service;
 
 import com.project.cs.exception.ErrorCode;
-import com.project.cs.exception.ResultData;
-import com.project.cs.exception.SVCException;
+import com.project.cs.common.exception.ResultData;
+import com.project.cs.common.exception.SVCException;
 import com.project.cs.member.domain.dto.SignRequest;
 import com.project.cs.member.domain.dto.SignResponse;
 import com.project.cs.member.domain.entity.Member;
 import com.project.cs.member.repository.MemberRepository;
-import com.project.cs.security.JwtProvider;
+import com.project.cs.common.security.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

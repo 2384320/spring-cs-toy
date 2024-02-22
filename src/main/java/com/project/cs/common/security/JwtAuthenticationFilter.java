@@ -1,4 +1,4 @@
-package com.project.cs.security;
+package com.project.cs.common.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

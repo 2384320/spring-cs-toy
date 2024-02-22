@@ -1,4 +1,4 @@
-package com.project.cs.s3;
+package com.project.cs.common.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;

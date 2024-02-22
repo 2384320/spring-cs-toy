@@ -1,4 +1,4 @@
-package com.project.cs.security;
+package com.project.cs.common.security;
 
 import com.project.cs.member.domain.entity.Member;
 import com.project.cs.member.domain.enums.MemberRole;

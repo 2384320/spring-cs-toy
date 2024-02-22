@@ -1,7 +1,7 @@
 package com.project.cs;
 
-import com.project.cs.exception.ResultData;
-import com.project.cs.s3.S3Service;
+import com.project.cs.common.exception.ResultData;
+import com.project.cs.common.s3.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

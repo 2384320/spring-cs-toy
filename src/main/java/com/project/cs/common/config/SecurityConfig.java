@@ -1,10 +1,10 @@
-package com.project.cs.config;
+package com.project.cs.common.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.cs.exception.ErrorCode;
-import com.project.cs.exception.ResultData;
-import com.project.cs.security.JwtAuthenticationFilter;
-import com.project.cs.security.JwtProvider;
+import com.project.cs.common.exception.ResultData;
+import com.project.cs.common.security.JwtAuthenticationFilter;
+import com.project.cs.common.security.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
