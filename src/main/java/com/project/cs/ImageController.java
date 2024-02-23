@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +23,7 @@ public class ImageController {
     private final S3Service s3Service;
 
     @PostMapping()
-    public ResponseEntity<Object> saveImage(@RequestParam(value = "file") MultipartFile file) throws IOException {
+    public ResponseEntity<Object> saveImage(@RequestParam MultipartFile file) throws IOException {
         s3Service.saveFile(file);
         return new ResponseEntity<>(
                 CommonResponse.success(
@@ -35,7 +34,7 @@ public class ImageController {
     }
 
     @GetMapping()
-    public ResponseEntity<Object> downloadImage(@RequestHeader String savedFileName) {
+    public ResponseEntity<Object> downloadImage(@RequestParam String savedFileName) {
         return new ResponseEntity<>(
                 CommonResponse.success(
                         SuccessCode.IMAGE_SUCCESS_DOWNLOAD,
@@ -46,7 +45,7 @@ public class ImageController {
     }
 
     @DeleteMapping()
-    public ResponseEntity<Object> deleteImage(@RequestHeader String savedFileName) {
+    public ResponseEntity<Object> deleteImage(@RequestParam String savedFileName) {
         s3Service.deleteImage(savedFileName);
         return new ResponseEntity<>(
                 CommonResponse.success(
@@ -55,5 +54,4 @@ public class ImageController {
                 HttpStatus.OK
         );
     }
-
 }
